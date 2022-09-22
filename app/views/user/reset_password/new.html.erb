@@ -1,0 +1,16 @@
+<div class="container mx-auto">
+  <!-- Auth Card -->
+  <div class=" bg-white rounded-lg shadow-md lg:shadow-lg m-10 p-10" >
+    <!-- Card Title -->
+    <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 m-3">
+      忘記密碼
+    </h2>
+    <%= form_with(action: reset_password_path(token: @token), class: "mt-10") do |f| %>
+      <!-- Email Input -->
+      <%= f.label "寄送驗證信箱", class: "block text-sm font-semibold text-gray-600 uppercase" %>
+      <%= f.text_field :email, class: "block w-full py-3 px-1 mt-2 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200" %>
+      <!-- Auth Buttton -->
+      <%= f.submit "確認", class: "w-full py-3 mt-10 bg-gray-800 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none" %>
+    <% end %>
+  </div>
+</div>

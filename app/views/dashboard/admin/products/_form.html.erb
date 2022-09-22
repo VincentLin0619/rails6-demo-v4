@@ -1,0 +1,27 @@
+<%= form_with model: product, url: url, local: true do |f| %>
+  <%= @attachments.errors.messages.inspect if @attachmnets.present? %>
+<div class="container">
+  <div class="row" id="upload-img-form">
+  <%= f.fields_for :attachments do |attachment| %>
+    <%= render "attachment_fields", f: attachment %>
+  <% end %>
+    <div class="links" id="add_attachment">
+      <%= link_to_add_association "新增", f, :attachments, partial: "attachment_fields" %>
+    </div>
+  </div>
+</div>
+<div class="col mb-3">
+  <%= f.label "商品名稱", class: "form-label" %> <%= f.text_field :name, class: "form-control", autofocus: true %>
+</div>
+<div class="col mb-3">
+  <%= f.label "價格", class: "form-label" %> <%= f.number_field :price, class: "form-control", autofocus: true %>
+</div>
+<div class="col mb-3">
+  <%= f.label "敘述", class: "form-label" %> <%= f.text_area :description, class: "form-control" %>
+</div>
+<div class="col mb-3">
+  <%= f.label "庫存", class: "form-label" %> <%= f.number_field :sku, class: "form-control" %>
+</div>
+<div class="col"><%= f.submit class: "btn btn-primary" %></div>
+<% end %>
+<%= javascript_pack_tag "attachment_fields" %>

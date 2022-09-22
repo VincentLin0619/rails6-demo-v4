@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">會員暱稱</th>
+      <th scope="col">會員信箱</th>
+      <th scope="col">會員角色</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <th scope="row"><%= user.id %></th>
+      <td><%= user.nick_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td>
+        <%= link_to "編輯", edit_dashboard_admin_user_path(user), class: "btn btn-primary" %>
+      <td>
+        <%= link_to "刪除", dashboard_admin_user_path(user), class: "btn btn-danger", method: "delete", data: { confirm: "確定刪除？" } %>
+      </td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+
+

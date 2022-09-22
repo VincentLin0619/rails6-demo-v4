@@ -1,0 +1,35 @@
+<div class="flex justify-center h-100 my-10 items-center">
+  <div class="w-full max-w-xs">
+    <p class="text-4xl">註冊頁面</p>
+    <%= form_with(model: @user,url: user_sign_up_path, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |f| %>
+      <% if f.object.errors.any? %>
+        <ul class="text-red-500 bg-red-100 list-disc">
+          <% f.object.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+              <li>
+              <% end %>
+            </ul>
+          <% end %>
+          <div class="mb-6">
+            <%= f.label "使用者名稱", class: "block text-gray-700 text-sm font-bold mb-2" %>
+            <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+          </div>
+          <div class="mb-6">
+            <%= f.label "使用者信箱", class: "block text-gray-700 text-sm font-bold mb-2" %>
+            <%= f.email_field :email, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+          </div>
+          <div class="mb-6">
+            <%= f.label "密碼", class: "block text-gray-700 text-sm font-bold mb-2" %>
+            <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+          </div>
+          <div class="mb-6">
+            <%= f.label "密碼確認", class: "block text-gray-700 text-sm font-bold mb-2" %>
+            <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+          </div>
+          <div class="flex items-center justify-between">
+            <%= f.submit "註冊", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
+          </div>
+        <% end %>
+      </div>
+    </div>

@@ -1,0 +1,32 @@
+<%= link_to "新增商品", new_dashboard_product_path, class: "btn btn-secondary" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">商品編輯</th>
+      <th scope="col">商品資訊</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <th scope="row">
+          <img src="#" class="" />
+        </th>
+        <td>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item active list-group-item-action list-group-item-dark">ID:<%= product.id %></li>
+            <li class="list-group-item">名稱：<%= product.name %></li>
+            <li class="list-group-item">價格：<%= product.price %></li>
+            <li class="list-group-item">內容：<%= product.description %></li>
+            <li class="list-group-item">庫存：<%= product.sku %></li>
+            <li class="list-group-item">
+              <%= link_to "編輯", edit_dashboard_admin_product_path(product),
+                          class: "btn btn-primary" %>
+              <%= link_to "刪除", dashboard_admin_product_path(product), class: "btn btn-danger", method: "delete", data: { confirm: "確定刪除？" } %>
+            </li>
+          </ul>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

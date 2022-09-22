@@ -1,0 +1,18 @@
+<h1 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 m-5">重設你的密碼</h1>
+<%= form_with model: @user, url: reset_password_edit_path(token: params[:token]) do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% f.object.errors.full_messages.each do |msg| %>
+        <div><%= msg %></div>
+      <% end %>
+    </div>
+  <% end %>
+  <!-- PassWord Input -->
+  <%= f.label "設定新密碼", class: "block text-xs font-semibold text-gray-600 uppercase" %>
+  <%= f.text_field :password, class: "block w-full py-3 px-1 mt-2 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200" %>
+  <!-- Password_Confirmation Input -->
+  <%= f.label "密碼確認", class: "block text-xs font-semibold text-gray-600 uppercase" %>
+  <%= f.text_field :password_confirmation, class: "block w-full py-3 px-1 mt-2 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200" %>
+  <!-- Auth Buttton -->
+  <%= f.submit "確認更改", class: "w-full py-3 mt-10 bg-gray-800 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none" %>
+<% end %>
