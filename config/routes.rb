@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   root "home#index"
   resources :products, only: %i[index show]
 
-  # Users signed_up
-  namespace :user do
-    resource :registrations, only: [:new, :create], as: :sign_up
-    resources :account_activations, only: [:edit]
+  # User signed_up
+  scope module: "user" do
+    resources :account
   end
+
+  # User Login
   scope module: "user" do
     get "sign_in", to: "session#new", as: "login"
     post "sign_in", to: "session#create"

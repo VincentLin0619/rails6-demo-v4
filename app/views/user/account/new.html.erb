@@ -1,7 +1,7 @@
 <div class="flex justify-center h-100 my-10 items-center">
   <div class="w-full max-w-xs">
     <p class="text-4xl">註冊頁面</p>
-    <%= form_with(model: @user,url: user_sign_up_path, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |f| %>
+    <%= form_with(model: @user,url: account_index_path, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |f| %>
       <% if f.object.errors.any? %>
         <ul class="text-red-500 bg-red-100 list-disc">
           <% f.object.errors.full_messages.each do |msg| %>
