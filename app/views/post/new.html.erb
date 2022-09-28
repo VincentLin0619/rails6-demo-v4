@@ -1,2 +1,22 @@
-<h1>Post#new</h1>
-<p>Find me in app/views/post/new.html.erb</p>
+<h1>新增文章</h1>
+<%= form_with(model:@post ,url:post_index_path) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this   post from being saved:</h2>
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title, "文章標題" %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content, "文章內容" %>
+    <%= f.rich_text_area :content %>
+  </div>
+  <%= f.submit "送出"%>
+<% end %>

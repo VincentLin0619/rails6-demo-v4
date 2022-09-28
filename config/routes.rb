@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
   resources :products, only: %i[index show]
-
+  resources :post
   # User signed_up
   scope module: "user" do
     resources :account
