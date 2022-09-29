@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   root "home#index"
-  resources :products, only: %i[index show]
-  resources :post
-  # User signed_up
+  resources :product, only: %i[index show]
+  # Post index
+  get "posts", to: "post#index"
+
   scope module: "user" do
+    # User signed_up
     resources :account
+    # User Post
+    resources :post
   end
 
   # User Login
@@ -15,6 +19,7 @@ Rails.application.routes.draw do
   end
   # ResetPassword
   scope module: "user" do
+    # User Reset Password
     get "reset_password", to: "reset_password#new"
     post "reset_password", to: "reset_password#create"
     get "reset_password/edit", to: "reset_password#edit"

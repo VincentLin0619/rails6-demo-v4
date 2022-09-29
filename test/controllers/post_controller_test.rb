@@ -5,14 +5,4 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     get post_index_url
     assert_response :success
   end
-
-  test "should get new" do
-    get post_new_url
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get post_edit_url
-    assert_response :success
-  end
 end
