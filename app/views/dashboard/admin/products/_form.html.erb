@@ -1,16 +1,54 @@
-<%= form_with model: product, url: url, local: true do |f| %>
-  <%= @attachments.errors.messages.inspect if @attachmnets.present? %>
-  <div class="col mb-3">
-    <%= f.label "商品名稱", class: "form-label" %> <%= f.text_field :name, class: "form-control", autofocus: true %>
+<div>
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="mt-5 md:col-span-2 md:mt-0">
+      <%= form_with model: product, url: url, local: true do |f| %>
+        <% if f.object.errors.any? %>
+          <div class="alert alert-danger">
+            <% f.object.errors.full_messages.each do |msg| %>
+              <div><%= msg %></div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="shadow sm:overflow-hidden sm:rounded-md">
+          <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                <%= f.label :title, "商品名稱", class:"block text-sm font-medium text-gray-700" %>
+                <div class="mt-1">
+                  <%= f.text_field :title, class:"mt-1 block w-full rounded-md border-gray-300 shadow-lg focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+                </div>
+              </div>
+            </div>
+            <div>
+              <%= f.label :description, "商品敘述", class:"block text-sm font-medium text-gray-700" %>
+              <div class="mt-1">
+                <%= f.text_area :description, class: "mt-1 block w-full rounded-md border-gray-300 shadow-md focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+              </div>
+            </div>
+            <div>
+              <%= f.label :price, "商品價格", class:"block text-sm font-medium text-gray-700" %>
+              <div class="mt-1">
+                <%= f.number_field :price, class: "mt-1 block w-full rounded-md border-gray-300 shadow-md focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+              </div>
+            </div>
+            <div>
+              <%= f.label :images %>
+              <%= f.file_field :images, multiple: true, class: "form-control" %>
+              <% if f.object.images.present? %>
+                <label>
+                  <%= f.check_box :remove_images %> 刪除圖檔
+                </label>
+                <% f.object.images.each do |i| %>
+                  <%= link_to i.filename, i.url, :target => "_blank" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+              <%= f.submit "新增", class: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+            </div>
+          </div>
+        </form>
+      <% end %>
+    </div>
   </div>
-  <div class="col mb-3">
-    <%= f.label "價格", class: "form-label" %> <%= f.number_field :price, class: "form-control", autofocus: true %>
-  </div>
-  <div class="col mb-3">
-    <%= f.label "敘述", class: "form-label" %> <%= f.text_area :description, class: "form-control" %>
-  </div>
-  <div class="col mb-3">
-    <%= f.label "庫存", class: "form-label" %> <%= f.number_field :sku, class: "form-control" %>
-  </div>
-  <div class="col"><%= f.submit class: "btn btn-primary" %></div>
-<% end %>
+</div>
