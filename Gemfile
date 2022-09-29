@@ -27,9 +27,12 @@ gem "will_paginate"
 gem "image_processing", "~> 1.2"
 gem "rails-i18n", "~> 7.0"
 gem "font-awesome-sass", "~> 6.1.2"
-
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.4", require: false
+
+# Upload files
+gem "carrierwave"
+gem "mini_magick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
