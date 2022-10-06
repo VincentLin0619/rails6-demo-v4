@@ -31,7 +31,6 @@ gem "font-awesome-sass", "~> 6.1.2"
 gem "bootsnap", ">= 1.4.4", require: false
 
 # Upload files
-gem "carrierwave"
 gem "mini_magick"
 
 group :development, :test do
