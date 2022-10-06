@@ -12,7 +12,7 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to dashboard_admin_products_path, notice: "商品新增成功！！<ID:#{@product.id}>"
+      redirect_to dashboard_products_path, notice: "商品新增成功！！<ID:#{@product.id}>"
     else
       render :new
     end
@@ -24,7 +24,7 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
 
   def update
     if @product.update(product_params)
-      redirect_to dashboard_admin_products_path, notice: "商品<ID:#{@product.id}>修改成功！！！"
+      redirect_to dashboard_products_path, notice: "商品<ID:#{@product.id}>修改成功！！！"
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
 
   def destroy
     if @product.destroy
-      redirect_to dashboard_admin_products_path, notice: "<ID:#{@product.id}>已被刪除！！"
+      redirect_to dashboard_products_path, notice: "<ID:#{@product.id}>已被刪除！！"
     else
       render :edit
     end

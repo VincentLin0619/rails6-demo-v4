@@ -13,9 +13,9 @@
           <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
             <div class="grid grid-cols-3 gap-6">
               <div class="col-span-3 sm:col-span-2">
-                <%= f.label :title, "商品名稱", class:"block text-sm font-medium text-gray-700" %>
+                <%= f.label :name, "商品名稱", class:"block text-sm font-medium text-gray-700" %>
                 <div class="mt-1">
-                  <%= f.text_field :title, class:"mt-1 block w-full rounded-md border-gray-300 shadow-lg focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+                  <%= f.text_field :name, class:"mt-1 block w-full rounded-md border-gray-300 shadow-lg focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
                 </div>
               </div>
             </div>
@@ -31,24 +31,29 @@
                 <%= f.number_field :price, class: "mt-1 block w-full rounded-md border-gray-300 shadow-md focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
               </div>
             </div>
-            <div>
-              <%= f.label :images %>
-              <%= f.file_field :images, multiple: true, class: "form-control" %>
-              <% if f.object.images.present? %>
-                <label>
-                  <%= f.check_box :remove_images %> 刪除圖檔
-                </label>
-                <% f.object.images.each do |i| %>
-                  <%= link_to i.filename, i.url, :target => "_blank" %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-              <%= f.submit "新增", class: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+            <%= f.label :sku, "商品庫存", class:"block text-sm font-medium text-gray-700" %>
+            <div class="mt-1">
+              <%= f.number_field :sku, class: "mt-1 block w-full rounded-md border-gray-300 shadow-md focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
             </div>
           </div>
-        </form>
-      <% end %>
-    </div>
+          <%# --------------------------------- dropzone --------------------------------- %>
+          <div class="mb-6">
+            <%= f.label :images, class: "label" %>
+            <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-max-files="4">
+              <%= f.file_field :images, direct_upload: true, data: { target: 'dropzone.input' }, mutiple: true %>
+              <div class="dropzone-msg dz-message needsclick text-gray-600">
+                <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+                <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
+              </div>
+            </div>
+          </div>
+          <%# --------------------------------- dropzone --------------------------------- %>
+          <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+            <%= f.submit "新增", class: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+          </div>
+        </div>
+      </form>
+    <% end %>
   </div>
+</div>
 </div>
