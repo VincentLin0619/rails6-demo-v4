@@ -41,7 +41,7 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
   protected
 
   def product_params
-    params.require(:product).permit(:remove_images, :name, :description, :price, :sku, :images => [])
+    params.require(:product).permit(:remove_images, :name, :description, :price, :sku, images: [])
   end
 
   def find_product

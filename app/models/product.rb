@@ -1,4 +1,4 @@
 class Product < ApplicationRecord
   # 上傳多檔案要用複數
-  mount_uploaders :images, ProductImageUploader
+  has_many_attached :images
 end

@@ -11,6 +11,7 @@ class User::AccountController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id # 掛上seesion紀錄註冊好的使用者
+      AccountMailer.hello(@user).deliver_now # 寄送信件
       redirect_to login_path, notice: "註冊成功！"
     else
       render :new
