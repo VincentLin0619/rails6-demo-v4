@@ -19,7 +19,6 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
   end
 
   def edit
-    @product.attachments.build
   end
 
   def update
