@@ -6,6 +6,7 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
   end
 
   def new
+    # @img_section = render :dropzone
     @product = Product.new
   end
 
