@@ -1,0 +1,2 @@
+class ImageMetum < ApplicationRecord
+end
