@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_24_073533) do
+ActiveRecord::Schema.define(version: 2022_10_27_021042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,15 +53,21 @@ ActiveRecord::Schema.define(version: 2022_10_24_073533) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "image_meta", force: :cascade do |t|
+  create_table "image_houses", force: :cascade do |t|
     t.bigint "product_id"
-    t.bigint "post_id"
-    t.bigint "user_id"
+    t.bigint "image_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_image_meta_on_post_id"
-    t.index ["product_id"], name: "index_image_meta_on_product_id"
-    t.index ["user_id"], name: "index_image_meta_on_user_id"
+    t.index ["image_id"], name: "index_image_houses_on_image_id"
+    t.index ["product_id"], name: "index_image_houses_on_product_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "image"
+    t.bigint "image_meta_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["image_meta_id"], name: "index_images_on_image_meta_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -78,7 +84,6 @@ ActiveRecord::Schema.define(version: 2022_10_24_073533) do
     t.integer "sku", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "images"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,7 +98,4 @@ ActiveRecord::Schema.define(version: 2022_10_24_073533) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "image_meta", "posts"
-  add_foreign_key "image_meta", "products"
-  add_foreign_key "image_meta", "users"
 end

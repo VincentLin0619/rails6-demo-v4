@@ -6,8 +6,8 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
   end
 
   def new
-    # @img_section = render :dropzone
     @product = Product.new
+    4.times { @product.images.build } if @product.images.nil?
   end
 
   def create
@@ -41,7 +41,7 @@ class Dashboard::Admin::ProductsController < Dashboard::DashboardController
   protected
 
   def product_params
-    params.require(:product).permit(:remove_images, :name, :description, :price, :sku, images: [])
+    params.require(:product).permit(:remove_images, :name, :description, :price, :sku, images_attributes: {})
   end
 
   def find_product

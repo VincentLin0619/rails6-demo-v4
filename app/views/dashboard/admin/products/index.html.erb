@@ -10,11 +10,6 @@
     <% @products.each do |product| %>
       <tr>
         <th scope="row">
-          <% if product.images.attached? %>
-            <% product.images.each do |img| %>
-              <%= image_tag img.variant(resize: '300x300') %>
-            <% end %>
-          <% end %>
         </th>
         <td>
           <ul class="list-group list-group-flush">

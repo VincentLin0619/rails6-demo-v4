@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  # 上傳多檔案要用複數
-  has_many_attached :images
+  has_many :image_houses
+  has_many :images, through: :image_houses
   accepts_nested_attributes_for :images, allow_destroy: true
 end
