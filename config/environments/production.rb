@@ -5,7 +5,7 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  host = "https://vintdemoapp.ml"
+  host = "https://vintdemoapp.tk"
   config.assets.css_compressor = nil
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.delivery_method = :smtp
