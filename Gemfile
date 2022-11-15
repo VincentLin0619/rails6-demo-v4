@@ -47,7 +47,8 @@ group :development do
   gem "listen", "~> 3.3"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
-
+  gem "rufo", "~> 0.13.0"
+  gem "htmlbeautifier", "~> 1.4"
   # Mail Test
   gem "letter_opener"
 end
@@ -65,8 +66,5 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "net-smtp", require: false
 gem "net-imap", require: false
 gem "net-pop", require: false
-gem "htmlbeautifier", "~> 1.4"
 
 gem "mail", "~> 2.7"
-
-gem "rufo", "~> 0.13.0"
