@@ -37,3 +37,5 @@ Procfile
 yarn-debug.log*
 .yarn-integrity
 Procfile.yml
+
+/config/credentials/production.key

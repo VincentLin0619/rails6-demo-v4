@@ -68,3 +68,5 @@ gem "net-pop", require: false
 gem "htmlbeautifier", "~> 1.4"
 
 gem "mail", "~> 2.7"
+
+gem "rufo", "~> 0.13.0"
