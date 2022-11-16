@@ -257,7 +257,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.3)
-  mail (~> 2.7)
   mini_magick
   net-imap
   net-pop
